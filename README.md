@@ -1,6 +1,8 @@
 # Issues with / fixes for Blogger 2 tutorial:
 
-Note: Some / all of these issues may be fixed by the time you read this (as I, and others, have reported some to the github repo 'issues' page for the tutorial).
+Note 1: The tutorial uses Rails 4.0.0, but I used 5.2.0 and many of the problems I faced may well have been due to this difference.
+
+Note 2: Some / all of these issues may be fixed by the time you read this (as I, and others, have reported some to the github repo 'issues' page for the tutorial).
 
 I found these solutions either by comparing my code with that of student examples where the functionality in question worked, or by experimentation. Since I am a Rails novice, my solutions may not be best practice!
 
@@ -35,3 +37,19 @@ For me, the green background clashes with the blue theme used elsewhere. After c
 <code>}</code>
 
 ...and adjust the color ("#CBD3F8") to taste.
+
+### L5 No \*\_sorcery\_core.rb file created on bin/rails generate...
+
+This is very likely not a problem with Rails 4.0.0, but I don't know for sure. With Rails 5.0.0 however, following the tutorial instructionms does not result in the creation of the \*\_sorcery\_core.rb file in db/migrate, when the bin/rails generate sorcery:install --model=Author command is run. This means none of the login stuff will work.
+
+I found a solution here: https://github.com/Sorcery/sorcery/issues/145#issuecomment-416462868
+
+This involves locating the .../sorcery/lib/generators/sorcery/install_generator.rb file (you will need to search your computer for the location) and commenting out a line. The line actually looked a little different (another Rails version difference). For me, the line to comment out was:
+
+<code>return unless defined?(Sorcery::Generators::InstallGenerator::ActiveRecord)</code>
+
+For previous Rails versions it might be:
+
+<code>return unless defined?(ActiveRecord)</code>
+
+I then reran the <code>bin/rails generate sorcery:install --model Author</code> (Note the '=' character is no longer required, though it may well work with it) command, and the \*\_sorcery\_core.rb was created.
