@@ -6,8 +6,9 @@
   <% end %>
 </p>
 <br />
-<p><%= @article.body %></p>
+<p><%= image_tag @article.image.url(:medium) %></p>
 <br />
+<p><%= @article.body %></p>
 <br />
 <%= link_to "edit", edit_article_path(@article) %>
 <br />
