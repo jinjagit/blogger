@@ -1,24 +1,10 @@
-# README
+# Issues with / fixes for Blogger 2 tutorial:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Note: Some / all of these issues may be fixed by the time you read this (as I, and others, have reported some to the github repo 'issues' page for the tutorial).
 
-Things you may want to cover:
+1. After creating comments and tags functionality, the delete article function breaks. (i.e. deleting an article will throw an error and stop the app). A solution is to edit the article.rb file to include;
+<code>dependent: :delete_all</code>
+in the lines:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<code>has_many :comments, dependent: :delete_all</code>
+<code>has_many :taggings, dependent: :delete_all</code>
