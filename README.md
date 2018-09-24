@@ -23,7 +23,7 @@ Similar to the above issue, to be able to delete tags, tag.rb needs to include t
 Simply replace the line <code><%= image_tag @article.image.url(:medium)</code> in ...articles/show.html.erb with the conditional code used in ...articles/\_form.html.erb
 
 <code><% if @article.image.exists? %></code><br />
-&nbsp;<code><%= image_tag @article.image.url %><br/></code> (<- this line should be indented)<br />
+&nbsp;&nbsp;<code><%= image_tag @article.image.url %><br/></code><br />
 <code><% end %></code>
 
 ### L4 Change the (ugly) green background color:
@@ -31,7 +31,7 @@ Simply replace the line <code><%= image_tag @article.image.url(:medium)</code> i
 For me, the green background clashes with the blue theme used elsewhere. After creating the style.css.scss file (L4), add the following lines to it:
 
 <code>html {</code><br />
-<code>  background-color: #CBD3F8;</code> (<- this line should be indented)<br />
+&nbsp;&nbsp;<code>background-color: #CBD3F8;</code><br />
 <code>}</code>
 
 ...and adjust the color ("#CBD3F8") to taste.
