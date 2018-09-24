@@ -6,5 +6,5 @@ Note: Some / all of these issues may be fixed by the time you read this (as I, a
 <code>dependent: :delete_all</code>
 in the lines:
 
-<code>has_many :comments, dependent: :delete_all</code>
+<code>has_many :comments, dependent: :delete_all</code><br />
 <code>has_many :taggings, dependent: :delete_all</code>
