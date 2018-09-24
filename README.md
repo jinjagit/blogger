@@ -1,8 +1,6 @@
 # Issues with / fixes for Blogger 2 tutorial:
 
-Note 1: The tutorial uses Rails 4.0.0, but I used 5.2.0 and many of the problems I faced may well have been due to this difference.
-
-Note 2: Some / all of these issues may be fixed by the time you read this (as I, and others, have reported some to the github repo 'issues' page for the tutorial).
+Note: The tutorial uses Rails 4.0.0, but I used 5.2.0 and many of the problems I faced may well have been due to this difference.
 
 I found these solutions either by comparing my code with that of student examples where the functionality in question worked, or by experimentation. Since I am a Rails novice, my solutions may not be best practice!
 
