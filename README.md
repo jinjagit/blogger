@@ -2,7 +2,7 @@
 
 Note: The tutorial uses Rails 4.0.0, but I used 5.2.0 and many of the problems I faced may well have been due to this difference.
 
-I found these solutions either by comparing my code with that of student examples where the functionality in question worked, or by experimentation. Since I am a Rails novice, my solutions may not be best practice!
+I found these solutions either by comparing my code with that of student examples where the functionality in question worked, searching the web, or by experimentation. Since I am a Rails novice, my solutions may not be best practice!
 
 ### L2 / L3 Deleting article breaks app, after previously working:
 After creating comments and tags functionality, the delete article function breaks. (i.e. deleting an article will throw an error and stop the app). A solution is to edit the article.rb file to include; <code>dependent: :delete_all</code> in the lines:
