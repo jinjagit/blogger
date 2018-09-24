@@ -52,4 +52,4 @@ I then reran the <code>bin/rails generate sorcery:install --model Author</code> 
 
 ### L5 Poor formatting of layout for "Logged out" / "Logged in as" footer
 
-If the code example in the tutorial is copied into ...app/views/layouts/application.html.erb various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body). There are probably various ways to improve / solve this, with my version of the layout file being just one.
+If the code example in the tutorial, to insert a footer to hold "Logged out" / "Logged in as..." text, is copied into ...app/views/layouts/application.html.erb, various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body). There are probably various ways to improve / solve this, with [my version](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/application.html.erb) of the layout file being just one.
