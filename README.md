@@ -42,7 +42,7 @@ For me, the green background clashes with the blue theme used elsewhere. After c
 
 This is very likely not a problem with Rails 4.0.0, but I don't know for sure. With Rails 5.0.0 however, following the tutorial instructions does not result in the creation of the \*\_sorcery\_core.rb file in db/migrate, when the <code>bin/rails generate sorcery:install --model=Author</code> command is run. This means none of the login stuff will work.
 
-I found a solution [here.](https://github.com/Sorcery/sorcery/issues/145#issuecomment-416462868), which involves locating the .../sorcery/lib/generators/sorcery/install_generator.rb file (you will need to search your computer for the location) and commenting out a line. The line actually looked a little different (another Rails version difference). For me, the line to comment out was:
+I found a solution [here](https://github.com/Sorcery/sorcery/issues/145#issuecomment-416462868), which involves locating the .../sorcery/lib/generators/sorcery/install_generator.rb file (you will need to search your computer for the location) and commenting out a line. The line actually looked a little different (another Rails version difference). For me, the line to comment out was:
 
 <code>return unless defined?(Sorcery::Generators::InstallGenerator::ActiveRecord)</code>
 
@@ -50,4 +50,4 @@ For previous Rails versions it might be:
 
 <code>return unless defined?(ActiveRecord)</code>
 
-I then reran the <code>bin/rails generate sorcery:install --model Author</code> (Note the '=' character is no longer required, though it may well work with it) command, and the \*\_sorcery\_core.rb was created.
+I then reran the <code>bin/rails generate sorcery:install --model Author</code> command, (Note the '=' character is no longer required, though it may well work with it), and the \*\_sorcery\_core.rb was created.
