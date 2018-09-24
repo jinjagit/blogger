@@ -49,3 +49,7 @@ For previous Rails versions it might be:
 <code>return unless defined?(ActiveRecord)</code>
 
 I then reran the <code>bin/rails generate sorcery:install --model Author</code> command, (Note the '=' character is no longer required, though it may well work with it), and the \*\_sorcery\_core.rb was created.
+
+### L5 Poor formatting of layout for "Logged out" / "Logged in as" footer
+
+If the code example in the tutorial is copied into ...app/views/layouts/application.html.erb various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body). There are probably various ways to improve / solve this, with my version of the layout file being just one.
