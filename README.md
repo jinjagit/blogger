@@ -56,8 +56,8 @@ If the code example in the tutorial, to insert a footer to hold "Logged out" / "
 My solution (before moving the contents of the footer to a sidebar) was:
 
 <code>\<body\></code><br />
-&nbsp;&nbsp;<code><p class="flash"><%= flash.notice %></p></code><br />
-&nbsp;&nbsp;<code><%= yield %></code><br />
+&nbsp;&nbsp;<code>\<p class="flash"\><%= flash.notice %>\</p\></code><br />
+&nbsp;&nbsp;<code>\<%= yield %\></code><br />
 &nbsp;&nbsp;<code><div id="container"></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;<code><div id="content"></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><h6 align="center"></code><br />
