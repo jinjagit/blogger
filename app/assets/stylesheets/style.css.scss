@@ -33,11 +33,11 @@ p {
     top: 0; /* Stay at the top */
     left: 0;
     background-color: #e5eaff;
-    border: solid;
-    border-width: 0 2px 0 0;
-    border-color: #061e44;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
+    -moz-box-shadow:    2px 0 5px 0 #afbacc;
+    -webkit-box-shadow: 2px 0 5px 0 #afbacc;
+    box-shadow:         2px 0 5px 0 #afbacc;
 }
 
 .sidelink {
