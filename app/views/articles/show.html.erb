@@ -20,14 +20,16 @@
 <br />
 <p><%= @article.body %></p>
 <br />
-<%= link_to "edit", edit_article_path(@article) %>
-<br />
-<br />
-<%= link_to "delete", article_path(@article),
-    method: :delete,
-    data: {confirm: "Really delete this article?"} %>
-<br />
-<br />
+<% if current_user and current_user.username == @article.author || current_user and current_user.username == "admin"  %>
+  <%= link_to "edit", edit_article_path(@article) %>
+  <br />
+  <br />
+  <%= link_to "delete", article_path(@article),
+      method: :delete,
+      data: {confirm: "Really delete this article?"} %>
+  <br />
+  <br />
+<% end %>
 <h3>Comments (<%= @article.comments.size %>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments %>
 <%= render partial: 'comments/form' %>
