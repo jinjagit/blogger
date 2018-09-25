@@ -55,21 +55,21 @@ I then reran the <code>bin/rails generate sorcery:install --model Author</code> 
 If the code example in the tutorial, to insert a footer to hold "Logged out" / "Logged in as..." text, is copied into ...app/views/layouts/application.html.erb, various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body).
 My solution (before moving the contents of the footer to a sidebar) was:
 
-<code><body></code>
-&nbsp;&nbsp;<code><p class="flash"><%= flash.notice %></p></code>
-&nbsp;&nbsp;<code><%= yield %></code>
-&nbsp;&nbsp;<code><div id="container"></code>
-&nbsp;&nbsp;&nbsp;&nbsp;<code><div id="content"></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><h6 align="center"></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% if logged_in? %></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "Logged in as #{current_user.username}" %></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% else %></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "logged out" %></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% end %></code>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code></h6></code>
-&nbsp;&nbsp;&nbsp;&nbsp;<code></div></code>
-&nbsp;&nbsp;<code></div></code>
-<code><body></code>
+<code><body></code><br />
+&nbsp;&nbsp;<code><p class="flash"><%= flash.notice %></p></code><br />
+&nbsp;&nbsp;<code><%= yield %></code><br />
+&nbsp;&nbsp;<code><div id="container"></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code><div id="content"></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><h6 align="center"></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% if logged_in? %></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "Logged in as #{current_user.username}" %></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% else %></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "logged out" %></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% end %></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code></h6></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code></div></code><br />
+&nbsp;&nbsp;<code></div></code><br />
+<code><body></code><br />
 
 
 ### L5 <code>before_filter</code> throws error and stops app:
