@@ -85,3 +85,13 @@ However, if you wish others to be able to test out most of the functionality of 
 ### L6 Sidebar:
 
 I found [this YouTube video](https://www.youtube.com/watch?v=Cixzw30bg10) helpful to get me started on creating a sidebar, in that it includes the basic structure for creating a partial for the sidebar, though you will have to add your own css to style it (including making it appear by giving it a size, position, etc.).
+
+### Preserve newlines in body text of articles:
+
+I found adding this to style.css.scss worked:
+
+<code>p {</code><br />
+&nbsp;&nbsp;<code>white-space: pre-line;</code><br />
+<code>}</code><br />
+
+Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).

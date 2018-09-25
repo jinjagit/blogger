@@ -16,7 +16,6 @@
   <%= f.label :tag_list %><br />
   <%= f.text_field :tag_list %>
   </p>
-  <%= @article.author = "Blobby" %>
   <p>
     <% if @article.image.exists? %>
       <%= image_tag @article.image.url %><br/>
