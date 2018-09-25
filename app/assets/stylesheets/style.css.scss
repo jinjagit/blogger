@@ -57,6 +57,10 @@ a {
   overflow: hidden;
 }
 
+.wrap {
+  word-wrap: break-word;
+}
+
 #container {
   width: 75%;
   margin: 0 auto;
