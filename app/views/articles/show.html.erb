@@ -5,12 +5,7 @@
 <h1><%= @article.title %></h1>
 <p>Author: <%= "#{@article.author}" %></p>
 <br />
-<p>
-  <%= link_to "Tags:", tags_path %>
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
-</p>
+<p><%= link_to "Tags:", tags_path %>&nbsp;<% @article.tags.each do |tag| %><%= link_to tag.name, tag_path(tag) %>&nbsp;<% end %></p>
 <br />
 <p>
   <% if @article.image.exists? %>
