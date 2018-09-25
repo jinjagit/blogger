@@ -26,14 +26,14 @@ p {
 }
 
 .sidenav {
-    height: 100%; /* Full-height: remove this if you want "auto" height */
-    width: 150px; /* Set the width of the sidebar */
-    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 100%;
+    width: 150px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
     left: 0;
     background-color: #e5eaff;
-    overflow-x: hidden; /* Disable horizontal scroll */
+    overflow-x: hidden;
     padding-top: 20px;
     -moz-box-shadow:    2px 0 5px 0 #afbacc;
     -webkit-box-shadow: 2px 0 5px 0 #afbacc;
