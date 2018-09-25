@@ -95,3 +95,5 @@ I found adding this to style.css.scss worked:
 <code>}</code><br />
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
+
+Note: This can spoil some formatting you may have introduced to other paragraphs ('\<p\>'). An easy fix is to change the other paragraphs to divs ('\<div\>').
