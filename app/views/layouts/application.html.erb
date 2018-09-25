@@ -11,6 +11,7 @@
 
   <body>
     <p class="flash"><%= flash.notice %></p>
+    <%= yield :sidebar %>
     <%= yield %>
     <div id="container">
       <div id="content">

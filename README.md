@@ -52,8 +52,32 @@ I then reran the <code>bin/rails generate sorcery:install --model Author</code> 
 
 ### L5 Poor formatting of layout for "Logged out" / "Logged in as" footer
 
-If the code example in the tutorial, to insert a footer to hold "Logged out" / "Logged in as..." text, is copied into ...app/views/layouts/application.html.erb, various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body). There are probably various ways to improve / solve this, with [my version](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/application.html.erb) of the layout file being just one. [Note: There are also some changes included from later in this section of the lesson + I am displaying the username not email in the footer].
+If the code example in the tutorial, to insert a footer to hold "Logged out" / "Logged in as..." text, is copied into ...app/views/layouts/application.html.erb, various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body).
+My solution (before moving the contents of the footer to a sidebar) was:
+
+<code><body></code>
+&nbsp;&nbsp;<code><p class="flash"><%= flash.notice %></p></code>
+&nbsp;&nbsp;<code><%= yield %></code>
+&nbsp;&nbsp;<code><div id="container"></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<code><div id="content"></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><h6 align="center"></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% if logged_in? %></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "Logged in as #{current_user.username}" %></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% else %></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "logged out" %></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% end %></code>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code></h6></code>
+&nbsp;&nbsp;&nbsp;&nbsp;<code></div></code>
+&nbsp;&nbsp;<code></div></code>
+<code><body></code>
+
 
 ### L5 <code>before_filter</code> throws error and stops app:
 
 <code>before_filter</code> is deprecated for Rails 5.0.0->, and <code>before_action</code> should be used in its place.
+
+### L5 Tweaks:
+
+Since this is a blog, no sign up option should be available to the general public, but only via a trusted user (yourself, for example). Thus, links to the list of authors @ /authors, which links to 'New Author' are only visible to a logged in user, and the New Author form can only be accessed by a logged in user (as per the tutorial).
+
+However, if you wish others to be able to test out most of the functionality of your blog, this step should skipped (or the relevant code commented out). This may well mean that you then want to limit editing of posts to only those created by the user that is editing.

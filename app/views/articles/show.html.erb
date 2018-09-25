@@ -1,3 +1,7 @@
+<% content_for(:sidebar) do %>
+  <%= render :partial => "layouts/sidebar" %>
+<% end %>
+
 <h1><%= @article.title %></h1>
 <p>
   <%= link_to "Tags:", tags_path %>

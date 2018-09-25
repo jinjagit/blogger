@@ -1,3 +1,7 @@
+<% content_for(:sidebar) do %>
+  <%= render :partial => "layouts/sidebar" %>
+<% end %>
+
 <h1>Editing Author</h1>
 
 <%= render 'form', author: @author %>
