@@ -3,8 +3,8 @@
     <p class="sidelink"><%= link_to "All Articles", articles_path %></p>
     <p class="sidelink"><%= link_to "All Tags", tags_path %></p>
     <p class="sidelink"><%= link_to "All Authors", authors_path %></p>
-    <div class="container">
-      <div class="content">
+    <div class="sidebar_container">
+      <div class="sidebar_content">
         <% if logged_in? %>
           <%= "Logged in as " %>
           <h3 class="wrap"><%= "#{current_user.username}" %></h3>

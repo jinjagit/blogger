@@ -10,8 +10,8 @@
   </head>
 
   <body>
-    <p class="flash"><%= flash.notice %></p>
     <%= yield :sidebar %>
+    <p class="flash"><%= flash.notice %></p>    
     <%= yield %>
   </body>
 </html>
