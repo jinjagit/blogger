@@ -58,9 +58,9 @@ My solution (before moving the contents of the footer to a sidebar) was:
 <code>\<body\></code><br />
 &nbsp;&nbsp;<code>\<p class="flash"\><%= flash.notice %>\</p\></code><br />
 &nbsp;&nbsp;<code>\<%= yield %\></code><br />
-&nbsp;&nbsp;<code><div id="container"></code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;<code><div id="content"></code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><h6 align="center"></code><br />
+&nbsp;&nbsp;<code>\<div id="container"\></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>\<div id="content"\></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>\<h6 align="center"\></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% if logged_in? %></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "Logged in as #{current_user.username}" %></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% else %></code><br />
