@@ -35,3 +35,21 @@ For me, the green background clashes with the blue theme used elsewhere. After c
 <code>}</code>
 
 ...and adjust the color ("#CBD3F8") to taste.
+
+### L5 No \*\_sorcery\_core.rb file created on bin/rails generate...
+
+This is very likely not a problem with Rails 4.0.0, but I don't know for sure. With Rails 5.0.0 however, following the tutorial instructions does not result in the creation of the \*\_sorcery\_core.rb file in db/migrate, when the <code>bin/rails generate sorcery:install --model=Author</code> command is run. This means none of the login stuff will work.
+
+I found a solution [here](https://github.com/Sorcery/sorcery/issues/145#issuecomment-416462868), which involves locating the .../sorcery/lib/generators/sorcery/install_generator.rb file (you will need to search your computer for the location) and commenting out a line. The line actually looked a little different (another Rails version difference). For me, the line to comment out was:
+
+<code>return unless defined?(Sorcery::Generators::InstallGenerator::ActiveRecord)</code>
+
+For previous Rails versions it might be:
+
+<code>return unless defined?(ActiveRecord)</code>
+
+I then reran the <code>bin/rails generate sorcery:install --model Author</code> command, (Note the '=' character is no longer required, though it may well work with it), and the \*\_sorcery\_core.rb was created.
+
+### L5 Poor formatting of layout for "Logged out" / "Logged in as" footer
+
+If the code example in the tutorial, to insert a footer to hold "Logged out" / "Logged in as..." text, is copied into ...app/views/layouts/application.html.erb, various elements in the layout look worse (e.g. the "Create new article" button is offset and half outside of the body). There are probably various ways to improve / solve this, with [my version](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/application.html.erb) of the layout file being just one. [Note: There are some changes included from later in this section of the lesson + I am displaying the username not email in the footer].
