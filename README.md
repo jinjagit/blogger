@@ -66,10 +66,10 @@ My solution (before moving the contents of the footer to a sidebar) was:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% else %></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><%= "logged out" %></code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code><% end %></code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code></h6></code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;<code></div></code><br />
-&nbsp;&nbsp;<code></div></code><br />
-<code><body></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>\</h6\></code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>\</div\></code><br />
+&nbsp;&nbsp;<code>\</div\></code><br />
+<code>\<body\></code><br />
 
 
 ### L5 <code>before_filter</code> throws error and stops app:
