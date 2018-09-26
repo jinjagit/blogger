@@ -78,13 +78,21 @@ My solution (before moving the contents of the footer to a sidebar) was:
 
 ### L5 Tweak to allow other students to test functionality:
 
-Since this is a blog, no sign up option should be available to the general public, but only via a trusted user (yourself, for example). Thus, links to the list of authors @ /authors, which links to 'New Author' are only visible to a logged in user, and the New Author form can only be accessed by a logged in user (as per the tutorial).
+Since this is a blog, no sign up option should be available to the general public, but only via a trusted user (yourself, for example). Thus, the tutorial ensures the New Author form can only be accessed by a logged in user.
 
 However, if you wish others to be able to test out most of the functionality of your blog, this step should skipped (or the relevant code commented out). This may well mean that you then want to limit editing of posts to only those created by the user that is editing.
 
 ### L6 Sidebar:
 
 I found [this YouTube video](https://www.youtube.com/watch?v=Cixzw30bg10) helpful to get me started on creating a sidebar, in that it includes the basic structure for creating a partial for the sidebar, though you will have to add your own css to style it (including making it appear by giving it a size, position, etc.).
+
+Basically, it involves creating a layout partial, like my [\_sidebar.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/_sidebar.html.erb), which contains everything you want to appear on the sidebar, and then inserting the following 3 lines into every view file where you wish to have the sidebar visible (all of them):
+
+<code><% content_for(:sidebar) do %></code><br />
+&nbsp;&nbsp;<code><%= render :partial => "layouts/sidebar" %></code><br />
+<code><% end %></code><br />
+
+As, for example, in my [app/views/articles/show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
 
 ### Preserve newlines in body text of articles:
 
