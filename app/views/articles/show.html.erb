@@ -5,12 +5,6 @@
 <h1><%= @article.title %></h1>
 <p style="font-size: 12px">Author: <%= "#{@article.author}" %> </p>
 <p style="font-size: 12px">Created: <%= "#{@article.created_at}" %> </p>
-<p>
-  <%= link_to "Tags:", tags_path %>
-  <% @article.tags.each do |tag| %>
-    <%= link_to tag.name, tag_path(tag) %>
-  <% end %>
-</p>
 <br />
 <p>
   <% if @article.image.exists? %>
@@ -19,6 +13,13 @@
 </p>
 <br />
 <p id="body_text"><%= @article.body %></p>
+<br />
+<p>
+  <%= link_to "Tags:", tags_path %>
+  <% @article.tags.each do |tag| %>
+    <%= link_to tag.name, tag_path(tag) %>
+  <% end %>
+</p>
 <br />
 <% if (current_user and current_user.username == @article.author) || (current_user and current_user.username == "admin")  %>
   <div class="btn_white_background">
