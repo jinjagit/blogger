@@ -3,8 +3,8 @@
 <% end %>
 
 <h1><%= @article.title %></h1>
-<p>Author: <%= "#{@article.author}" %></p>
-<br />
+<p style="font-size: 12px">Author: <%= "#{@article.author}" %> </p>
+<p style="font-size: 12px">Created: <%= "#{@article.created_at}" %> </p>
 <p>
   <%= link_to "Tags:", tags_path %>
   <% @article.tags.each do |tag| %>
