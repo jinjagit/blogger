@@ -1,5 +1,15 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
+  before_action :require_login, except: [:show, :index]
+  before_action :author_or_admin, only: [:edit, :destroy]
+
+  def author_or_admin
+    @article = Article.find(params[:id])
+    unless @article.author == current_user.username
+      redirect_to root_path
+      return false
+    end
+  end
 
   def index
     @articles = Article.all
