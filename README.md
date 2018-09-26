@@ -88,16 +88,15 @@ I found [this YouTube video](https://www.youtube.com/watch?v=Cixzw30bg10) helpfu
 
 ### Preserve newlines in body text of articles:
 
-I found adding this worked:
+I found this worked:
 
-add to style.css.scss
+add to style.css.scss<br />
 <code>.body_text {</code><br />
 &nbsp;&nbsp;<code>white-space: pre-line;</code><br />
 <code>}</code><br />
 
-edit line in app/views/articles/show.html.erb
+edit line in app/views/articles/show.html.erb<br />
 <code>\<p class="body_text"><%= \@article.body %>\</p></code><br />
-
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
 
