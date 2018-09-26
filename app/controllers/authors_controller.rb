@@ -1,5 +1,14 @@
 class AuthorsController < ApplicationController
   before_action :set_author, only: [:show, :edit, :update, :destroy]
+  before_action :admin, only: [:edit, :destroy]
+
+  def admin
+    unless current_user.username == "admin"
+      redirect_to root_path
+      return false
+    end
+  end
+
   #before_action :zero_authors_or_authenticated, only: [:new, :create]
 
   #def zero_authors_or_authenticated
@@ -8,7 +17,6 @@ class AuthorsController < ApplicationController
       #return false
     #end
   #end
-
 
   # GET /authors
   # GET /authors.json
