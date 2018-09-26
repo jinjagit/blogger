@@ -82,6 +82,22 @@ Since this is a blog, no sign up option should be available to the general publi
 
 However, if you wish others to be able to test out most of the functionality of your blog, this step should skipped (or the relevant code commented out). This may well mean that you then want to limit editing of posts to only those created by the user that is editing.
 
+### Restrict activity of user (both logged in and not logged in):
+
+If, like me, you would like other students of the Odin course to peruse your app, but NOT have the ability to edit / delete other peoples' posts, nor edit / delete authors, nor delete tags, there are a number of things to do:
+
+1. Do not implement the feature in the tutorial that prevents new author creation by a non-logged in author (otherwise nobody can sign up without the help of a logged in user!), but rather include the code and comment it out (it will be a useful template for some of the steps below).
+
+2. Work out how to add an 'author' column to the articles database. I then implemented showing the author name at the top of each article to confirm this works, before using this parameter in step 3, below.
+
+3. Implement conditional statements in the various views to prevent the inclusion of the relevant links to non-authors / non-admins / non-logged in users (article edit / delete in /articles/show.html.erb, for example). Don't forget to do this for the 'create new article' link, author delete / edit (I restricted this to 'admin' only), and tag delete.
+
+4. Prevent navigation to the relevant pages by non-authors / non-admin (http://localhost:3000/articles/15/edit, for example). this is where the code from the tutorial, mentioned above, will come in handy. Basically, this needs a careful selection of <code>before_action...</code> declarations, and writing some associated functions in the relevant controller files. See [my .../controllers/articles_controller.rb file](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), for example.
+
+5. Change the "logged out" message to a "login" link and add a "sign up" link that takes the user to the new author page.
+
+Note: Also remember <code>before_filter</code> is deprecated in Rails 5.0.0->, where <code>before_action</code> is used instead.
+
 ### L6 Sidebar:
 
 I found [this YouTube video](https://www.youtube.com/watch?v=Cixzw30bg10) helpful to get me started on creating a sidebar, in that it includes the basic structure for creating a partial for the sidebar, though you will have to add your own css to style it (including making it appear by giving it a size, position, etc.).
