@@ -92,7 +92,7 @@ If, like me, you would like other students of the Odin course to peruse your app
 
 3. Implement conditional statements in the various views to prevent the inclusion of the relevant links to non-authors / non-admins / non-logged in users (article edit / delete in /articles/show.html.erb, for example). Don't forget to do this for the 'create new article' link, author delete / edit (I restricted this to 'admin' only), and tag delete (also 'admin' only).
 
-4. Prevent navigation to the relevant pages by non-authors / non-admin (http://localhost:3000/articles/15/edit, for example). this is where the code from the tutorial, mentioned above, will come in handy. Basically, this needs a careful selection of <code>before_action...</code> declarations, and writing some associated functions in the relevant controller files. See [my .../controllers/articles_controller.rb file](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), for example.
+4. Prevent navigation to the relevant pages by non-authors / non-admin ('\http://localhost:3000/articles/15/edit', for example). this is where the code from the tutorial, mentioned above, will come in handy. Basically, this needs a careful selection of <code>before_action...</code> declarations, and writing some associated functions in the relevant controller files. See [my .../controllers/articles_controller.rb file](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), for example.
 
 5. Change the "logged out" message to a "login" link and add a "sign up" link that takes the user to the new author page.
 
