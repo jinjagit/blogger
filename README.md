@@ -110,6 +110,8 @@ Basically, it involves creating a layout partial, like my [\_sidebar.html.erb](h
 
 As, for example, in my [app/views/articles/show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
 
+Note: Because we are given a huge (and unreadable) block of css styling in screen.css.scss, the sidebar and main body of the web pages are not set up as 2 distinct columns. This makes centering the content of the pages relative to the sidebar somewhat messy. I have found a reasonable compromise (see .body css in [style.css.scss](https://github.com/jinjagit/blogger/blob/master/app/assets/stylesheets/style.css.scss)), but it can look a bit 'off' when viewed in a large window on a 4k screen. If this app was intended for real-life use, I would write all my own css. Since I need to learn about Rails more than develop my css skills, however, I can live with this.
+
 ### Preserve newlines in body text of articles:
 
 I found this worked:
@@ -123,10 +125,6 @@ edit line in app/views/articles/show.html.erb<br />
 <code>\<p class="body_text"><%= \@article.body %>\</p></code><br />
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
-
-### Remove <code>max-width</code> in css:
-
-I found the containers for the articles and other page content would not span the full width of my screen when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a <code>max-width</code> declaration. Delete it.
 
 ### Limited control of button attributes:
 
