@@ -18,7 +18,7 @@
   <% end %>
 </p>
 <br />
-<p class="body_text"><%= @article.body %></p>
+<p id="body_text"><%= @article.body %></p>
 <br />
 <% if (current_user and current_user.username == @article.author) || (current_user and current_user.username == "admin")  %>
   <div class="btn_white_background">
