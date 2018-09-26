@@ -76,7 +76,7 @@ My solution (before moving the contents of the footer to a sidebar) was:
 
 <code>before_filter</code> is deprecated for Rails 5.0.0->, and <code>before_action</code> should be used in its place.
 
-### L5 Tweaks:
+### L5 Tweak to allow other students to test functionality:
 
 Since this is a blog, no sign up option should be available to the general public, but only via a trusted user (yourself, for example). Thus, links to the list of authors @ /authors, which links to 'New Author' are only visible to a logged in user, and the New Author form can only be accessed by a logged in user (as per the tutorial).
 
@@ -88,15 +88,18 @@ I found [this YouTube video](https://www.youtube.com/watch?v=Cixzw30bg10) helpfu
 
 ### Preserve newlines in body text of articles:
 
-I found adding this to style.css.scss worked:
+I found adding this worked:
 
-<code>p {</code><br />
+add to style.css.scss
+<code>.body_text {</code><br />
 &nbsp;&nbsp;<code>white-space: pre-line;</code><br />
 <code>}</code><br />
 
-Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
+edit line in app/views/articles/show.html.erb
+<code>\<p class="body_text"><%= \@article.body %>\</p></code><br />
 
-Note: This can spoil some formatting you may have introduced to other paragraphs ('\<p\>'). An easy fix is to change the other paragraphs to divs ('\<div\>').
+
+Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
 
 ### Remove max-width of container(s), for 4k screens:
 

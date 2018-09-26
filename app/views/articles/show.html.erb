@@ -5,12 +5,12 @@
 <h1><%= @article.title %></h1>
 <p>Author: <%= "#{@article.author}" %></p>
 <br />
-<div>
+<p>
   <%= link_to "Tags:", tags_path %>
   <% @article.tags.each do |tag| %>
     <%= link_to tag.name, tag_path(tag) %>
   <% end %>
-</div>
+</p>
 <br />
 <p>
   <% if @article.image.exists? %>
@@ -18,7 +18,7 @@
   <% end %>
 </p>
 <br />
-<p><%= @article.body %></p>
+<p class="body_text"><%= @article.body %></p>
 <br />
 <% if (current_user and current_user.username == @article.author) || (current_user and current_user.username == "admin")  %>
   <%= link_to "edit", edit_article_path(@article) %>
