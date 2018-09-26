@@ -20,7 +20,7 @@
 <br />
 <p><%= @article.body %></p>
 <br />
-<% if current_user and current_user.username == @article.author || current_user and current_user.username == "admin"  %>
+<% if (current_user and current_user.username == @article.author) || (current_user and current_user.username == "admin")  %>
   <%= link_to "edit", edit_article_path(@article) %>
   <br />
   <br />
