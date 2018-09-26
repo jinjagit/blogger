@@ -100,6 +100,6 @@ edit line in app/views/articles/show.html.erb<br />
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
 
-### Remove max-width of container(s), for 4k screens:
+### Remove <code>max-width</code> in css, for 4k screens:
 
-I found the containers for the articles and other page content would not span the full width of my screen (4k) when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a max-width declaration. Delete it.
+I found the containers for the articles and other page content would not span the full width of my screen (4k) when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a <code>max-width</code> declaration. Delete it.
