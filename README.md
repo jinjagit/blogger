@@ -82,7 +82,7 @@ Since this is a blog, no sign up option should be available to the general publi
 
 However, if you wish others to be able to test out most of the functionality of your blog, this step should skipped (or the relevant code commented out). This may well mean that you then want to limit editing of posts to only those created by the user that is editing.
 
-### Restrict activity of user (both logged in and not logged in):
+### L5 Restrict activity of user (both logged in and not logged in):
 
 If, like me, you would like other students of the Odin course to peruse your app, but NOT have the ability to edit / delete other peoples' posts, nor edit / delete authors, nor delete tags, there are a number of things to do:
 
