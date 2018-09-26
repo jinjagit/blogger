@@ -124,9 +124,9 @@ edit line in app/views/articles/show.html.erb<br />
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
 
-### Remove <code>max-width</code> in css, for 4k screens:
+### Remove <code>max-width</code> in css:
 
-I found the containers for the articles and other page content would not span the full width of my screen (4k) when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a <code>max-width</code> declaration. Delete it.
+I found the containers for the articles and other page content would not span the full width of my screen when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a <code>max-width</code> declaration. Delete it.
 
 ### Limited control of button attributes:
 
@@ -136,4 +136,4 @@ I probably should have created my own buttons (for example, for the links on the
 
 It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
-After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
+After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
