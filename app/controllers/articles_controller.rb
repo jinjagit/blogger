@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def author_or_admin
     @article = Article.find(params[:id])
-    unless @article.author == current_user.username
+    unless (@article.author == current_user.username) || (current_user.username == "admin")
       redirect_to root_path
       return false
     end
