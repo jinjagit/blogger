@@ -137,3 +137,7 @@ I probably should have created my own buttons (for example, for the links on the
 It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
+
+### Date-based navigation links:
+
+Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired).
