@@ -21,12 +21,15 @@
 <p class="body_text"><%= @article.body %></p>
 <br />
 <% if (current_user and current_user.username == @article.author) || (current_user and current_user.username == "admin")  %>
-  <%= link_to "edit", edit_article_path(@article) %>
-  <br />
-  <br />
-  <%= link_to "delete", article_path(@article),
+  <div class="btn_white_background">
+    <%= button_to "Edit", edit_article_path(@article),
+      :style => 'width: 95px', method: :get %>
+  </div>
+  <div class="btn_white_background">
+    <%= button_to "Delete", article_path(@article), :style => 'width: 95px; background-image: linear-gradient(#8c0101, #590000, #8c0101)',
       method: :delete,
       data: {confirm: "Really delete this article?"} %>
+  </div>
   <br />
   <br />
 <% end %>
