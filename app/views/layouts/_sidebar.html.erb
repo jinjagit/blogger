@@ -20,19 +20,19 @@
     </div>
     <% if logged_in? %>
       <div class="btn">
-        <%= button_to "logout", logout_path,
+        <%= button_to "Logout", logout_path,
           :style => 'width: 127px; background-image: linear-gradient(#8c0101, #590000, #8c0101)',
           method: :get %>
       </div>
     <% else %>
       <div class="btn">
-        <%= button_to "login", login_path, :style => 'width: 127px; background-image: linear-gradient(#017501, #005900, #017501)',
+        <%= button_to "Login", login_path, :style => 'width: 127px; background-image: linear-gradient(#017501, #005900, #017501)',
           method: :get %>
       </div>
       <br />
       <br />
       <div class="btn">
-        <%= button_to "sign up", new_author_path, :style => 'width: 127px; background-image: linear-gradient(#630293, #3a0056, #630293)',
+        <%= button_to "Sign Up", new_author_path, :style => 'width: 127px; background-image: linear-gradient(#630293, #3a0056, #630293)',
           method: :get %>
       </div>
     <% end %>
