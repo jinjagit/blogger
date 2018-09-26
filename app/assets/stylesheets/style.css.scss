@@ -6,8 +6,9 @@ html {
 
 body {
   background-color: $primary_color;
-  margin-left: 200px;
-  width: calc(95% - 200px);
+  margin-left: calc(15% + 100px);
+  margin-right: auto;
+  width: calc(85% - 200px);
   font: {
     family: Verdana, Helvetica, Arial;
     size: 14px;
