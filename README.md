@@ -127,3 +127,7 @@ Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-b
 ### Remove <code>max-width</code> in css, for 4k screens:
 
 I found the containers for the articles and other page content would not span the full width of my screen (4k) when the window was maximized. Somewhere in that huge block of code in screen.css.scss is a <code>max-width</code> declaration. Delete it.
+
+### Limited control of button attributes:
+
+I probably should have created my own buttons (for example, for the links on the sidebar) using JavaScript, but instead decided to try to do this using only Ruby in the layout file(s). I found that if I just stuck to the default style (delivered by the screen.css.scss file), then I could get quite a good result that included a nice hover background color change. As soon as I changed the button background color (actually a gradient background-image), however, I lost this hover effect. I tried introducing special classes and many other methods, but I think that without understanding the screen.css.scss file better (which isn't really my focus for this project), I cannot do better. Also, since it looks OK to me, I am not too worried.
