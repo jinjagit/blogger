@@ -112,6 +112,10 @@ As, for example, in my [app/views/articles/show.html.erb](https://github.com/jin
 
 Note: Because we are given a huge (and unreadable) block of css styling in screen.css.scss, the sidebar and main body of the web pages are not set up as 2 distinct columns. This makes centering the content of the pages relative to the sidebar somewhat messy. I have found a reasonable compromise (see .body css in [style.css.scss](https://github.com/jinjagit/blogger/blob/master/app/assets/stylesheets/style.css.scss)), but it can look a bit 'off' when viewed in a large window on a 4k screen. If this app was intended for real-life use, I would write all my own css. Since I need to learn about Rails more than develop my css skills, however, I can live with this.
 
+### L6 Date-based navigation links:
+
+Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired).
+
 ### Preserve newlines in body text of articles:
 
 I found this worked:
@@ -135,7 +139,3 @@ I probably should have created my own buttons (for example, for the links on the
 It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
-
-### Date-based navigation links:
-
-Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired).
