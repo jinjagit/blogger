@@ -134,6 +134,6 @@ I probably should have created my own buttons (for example, for the links on the
 
 ### Add ability for admin to delete any comment:
 
-It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc) the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
+It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).

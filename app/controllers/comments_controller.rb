@@ -1,5 +1,13 @@
 class CommentsController < ApplicationController
   before_action :require_login, except: [:create]
+  before_action :admin, only: [:destroy]
+
+  def admin
+    unless current_user.username == "admin"
+      redirect_to root_path
+      return false
+    end
+  end
 
   def create
     @comment = Comment.new(comment_params)
