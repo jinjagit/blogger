@@ -65,6 +65,20 @@ a {
   word-wrap: break-word;
 }
 
+.btn{
+  width: 150px;
+  height: 35px;
+  color: white;
+  display: block;
+  background-color: #e5eaff;
+  padding: 4px 12px;
+
+  -o-transition: background-image .2s ease-in;
+  -moz-transition: background-image .2s ease-in;
+  -webkit-transition: background-image .2s ease-in;
+  transition: background-image .2s ease-in;
+}
+
 #container {
   width: 100%;
   margin: 0 auto;
