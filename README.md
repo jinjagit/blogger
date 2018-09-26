@@ -88,7 +88,7 @@ If, like me, you would like other students of the Odin course to peruse your app
 
 1. Do not implement the feature in the tutorial that prevents new author creation by a non-logged in author (otherwise nobody can sign up without the help of a logged in user!), but rather include the code and comment it out (it will be a useful template for some of the steps below).
 
-2. Work out how to add an 'author' column to the articles database. I then implemented showing the author name at the top of each article to confirm this works, before using this parameter in step 3, below.
+2. Work out how to add an 'author' column to the articles database. I then implemented showing the author name at the top of each article (created after adding the new database column) to confirm this works, before using this parameter in step 3, below.
 
 3. Implement conditional statements in the various views to prevent the inclusion of the relevant links to non-authors / non-admins / non-logged in users (article edit / delete in /articles/show.html.erb, for example). Don't forget to do this for the 'create new article' link, author delete / edit (I restricted this to 'admin' only), and tag delete.
 
