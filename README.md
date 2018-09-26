@@ -1,8 +1,8 @@
 # Issues with / fixes for Blogger 2 tutorial:
 
-Many of the issues may well be due to my using Rails 5.2.0, not 4.0.0 as in the tutorial. Many of the extra tweaks / ideas, however, may work for many versions of Rails.
+Many of the issues may well be due to my using Rails 5.2.0, not 4.0.0 as in the tutorial. Many of the extra tweaks / ideas, however, will work for many versions of Rails.
 
-I found these solutions either by comparing my code with that of student examples where the functionality in question worked, searching the web, or experimentation. Since I am a Rails novice, my solutions may not be best practice!
+I found these solutions either by comparing my code with that of student examples where the functionality in question worked, searching the web, or experimentation. Since I am a Rails novice, my solutions / tweaks may not be best practice!
 
 ### L2 / L3 Deleting article breaks app, after previously working:
 After creating comments and tags functionality, the delete article function breaks. (i.e. deleting an article will throw an error and stop the app). A solution is to edit the article.rb file to include; <code>dependent: :delete_all</code> in the lines:
