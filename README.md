@@ -181,10 +181,14 @@ After some experimenting, I achieved this by inserting the following code into t
 &nbsp;&nbsp;<code>end</code><br />
 <code>end</code><br />
 
-### Add Mark up functionality to body text:
+### Ability to add links in article body text:
 
-Mark up syntax enables italics, bold, links, insertion of images and much more. I added it to the article and comments body text.
+I used a gem that should enable full mark up syntax, but actually only some of it's functionality works (including links, which was what I wanted). I suspect this may because of the screen.css.scss file we were given early in the tutorial (perhaps preventing italic, bold, etc?).
 
 I used this article as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
 
 [Here](https://daringfireball.net/projects/markdown/syntax) is a list of the syntax it uses (based on Daring Fireball syntax).
+
+Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '<br />' statements where needed.
+
+A link can now be included in an article body text using the following format: \[text_label_to_show]\(some_url_here)
