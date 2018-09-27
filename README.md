@@ -88,7 +88,7 @@ The 'Extra Credit' part of L5 only asks for restricting the editing of articles 
 
 1. Do not implement the feature in the tutorial that prevents new author creation by a non-logged in author (otherwise nobody can sign up without the help of a logged in user!), but rather include the code and comment it out (it will be a useful template for some of the steps below).
 
-2. Work out how to add an 'author' column to the articles database. I then implemented showing the author name at the top of each article (created after adding the new database column) to confirm this works, before using this parameter in step 3, below.
+2. Work out how to add an 'author' column to the articles database ([this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) might help). I then implemented showing the author name at the top of each article (created after adding the new database column) to confirm this works, before using this parameter in step 3, below.
 
 3. Add conditional statements to the various views to prevent the inclusion of the relevant links to non-authors / non-admins / non-logged in users (article edit / delete links in .../articles/show.html.erb, for example). Don't forget to do this for the 'create new article' button, author delete / edit links (I restricted this to "admin" only), and tag delete (also "admin" only).
 
@@ -114,7 +114,7 @@ Note: Because we are given a huge (and unreadable) block of css styling in scree
 
 ### L6 Date-based navigation links [Not implemented]:
 
-Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired). Creating such a new view would also be very similar to creating the new 'Top 3 Most Viewed Articles' view, as described below.
+Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well (without manually resetting my system date and creating new articles, several times). I did include a time-stamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired). Creating such a new view would also be very similar to creating the new 'Top 3 Most Viewed Articles' view, as described below.
 
 ### L6 Implement view_count for articles:
 
@@ -128,11 +128,11 @@ After that, it is a simple task to show the view count on the article(s) page(s)
 
 First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/blob/master/config/routes.rb), called 'index_by_views', using information in [this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) as a template. Then, I created a new method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), modeled on the 'index' method, but with a different ordering (by number of views, in descending order). I also changed 'index' to specify ascending created_at order. This meant I could now add a button to my sidebar that linked to the new 'index_by_views'.
 
-Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view and changed the title to something appropriate.
+Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view (and the original index view) and changed the page title to something appropriate.
 
 ### L6 Create a simple RSS feed [Not implemented]:
 
-Whilst the <code>respond_to</code> functions [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, declined the invitation to implement this last 'extra' step in L6.
+Whilst the <code>respond_to</code> [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, did not implement this last 'extra' step in L6.
 
 ### Preserve newlines in body text of articles:
 
