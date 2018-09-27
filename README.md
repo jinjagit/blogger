@@ -189,6 +189,6 @@ I used this article as a guide. Only installation of the gem, restart of your ra
 
 [Here](https://daringfireball.net/projects/markdown/syntax) is a list of the syntax it uses (based on Daring Fireball syntax).
 
-Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '<br />' statements where needed.
+Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '\<br /\>' statements where needed.
 
 A link can now be included in an article body text using the following format: \[text_to_display]\(some_url_here)
