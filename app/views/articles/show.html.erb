@@ -3,8 +3,8 @@
 <% end %>
 
 <h1><%= @article.title %></h1>
+<p style="font-size: 12px">Created: <%= "#{@article.created_at}  [views: #{@article.view_count}]" %> </p>
 <p style="font-size: 12px">Author: <%= "#{@article.author}" %> </p>
-<p style="font-size: 12px">Created: <%= "#{@article.created_at}" %> </p>
 <br />
 <p>
   <% if @article.image.exists? %>

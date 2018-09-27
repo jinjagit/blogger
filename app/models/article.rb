@@ -17,5 +17,12 @@ class Article < ApplicationRecord
     self.tags = new_or_found_tags
   end
 
+  def self.increment_view_count(view_count)
+    if view_count == nil
+      view_count = 1
+    else
+      view_count += 1
+    end
+  end
 
 end
