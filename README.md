@@ -112,10 +112,9 @@ As, for example, in my [app/views/articles/show.html.erb](https://github.com/jin
 
 Note: Because we are given a huge (and unreadable) block of css styling in screen.css.scss, the sidebar and main body of the web pages are not set up as 2 distinct columns. This makes centering the content of the pages relative to the sidebar somewhat messy. I have found a reasonable compromise (see .body css in [style.css.scss](https://github.com/jinjagit/blogger/blob/master/app/assets/stylesheets/style.css.scss)), but it can look a bit 'off' when viewed in a large window on a 4k screen. If this app was intended for real-life use, I would write all my own css. Since I need to learn about Rails more than develop my css skills, however, I can live with this.
 
-### L6 Date-based navigation links:
+### L6 Date-based navigation links [Not implemented]:
 
-Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired).
-
+Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired). Creating such a new view would also be very similar to creating the new 'Top 3 Most Viewed Articles' view, as described below.
 
 ### L6 Implement view_count for articles:
 
@@ -130,6 +129,10 @@ After that, it is a simple task to show the view count on the article(s) page(s)
 First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/blob/master/config/routes.rb), called 'index_by_views', using information in [this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) as a template. Then, I created a new method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), modeled on the 'index' method, but with a different ordering (by number of views, in descending order). I also changed 'index' to specify ascending created_at order. This meant I could now add a button to my sidebar that linked to the new 'index_by_views'.
 
 Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view and changed the title to something appropriate.
+
+### L6 Create a simple RSS feed [Not implemented]:
+
+Whilst the <code>respond_to</code> functions [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, declined the invitation to implement this last 'extra' step in L6.
 
 ### Preserve newlines in body text of articles:
 
