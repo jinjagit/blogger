@@ -7,12 +7,12 @@
 <ul>
   <% @tags.each do |tag| %>
     <li>
-      <%= link_to tag.name, tag_path(tag) %>
-      <% if current_user and current_user.username == "admin" %>
-        <%= link_to "(delete)", tag_path(tag),
-            method: :delete,
-            data: {confirm: "Really delete this tag?"} %>
-      <% end %>
+        <%= link_to tag.name, tag_path(tag) %>
+        <% if current_user and current_user.username == "admin" %>
+          <%= link_to "(delete)", tag_path(tag),
+              method: :delete,
+              data: {confirm: "Really delete this tag?"} %>
+        <% end %>
     </li>
   <% end %>
 </ul>

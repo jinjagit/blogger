@@ -157,3 +157,26 @@ I probably should have created my own buttons (for example, for the links on the
 It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
+
+### Delete orphaned tags:
+
+This is _kind of_ related to the final extra task listed in the Odin Project instructions for this tutorial exercise, where it says;
+
+"...if you delete a tag, all related orphaned taggings will remain there."
+
+Except they don't! Observing all tags and all taggings when all articles associated with a particular tag are deleted, shows all taggings are correctly destroyed. Likewise the console also reveals that when a tag is deleted (manually), all the related taggings are correctly destroyed. The <code>dependent: :destroy</code> mentioned in the Odin instructions has already been included, so taggings are not the problem.
+
+Tags are an issue however. When all articles that contain a reference to a tag are deleted, the tag remains. Thus, orphaned tags (NOT taggings) are the issue.
+
+To investigate this, i created a couple of orphaned tags (by creating an article with 2 new, unique tags), and then inserted <code><%= "#{tag.taggings.count}" %></code> into the <code>@tags.each do |tag|</code> in the same view. Sure enough, the two orphaned tags had 0 taggings associated, (and the non-orphans had 1 or more taggings associated).
+
+Thus, it would be trivial to filter out orphaned tags from the tags index view using a conditional; <code><% if tag.taggings.count != 0 %></code>, but that wouldn't actually remove the tags! In this app, that wouldn't matter, but in another context a database table could be filling with a large number of orphaned items which are never removed. Really, the tag needs removing when the article is deleted, which means the delete method in the articles controller needs to trigger a check for whether associated tags have only one tagging associated, and if so trigger the deletion of any such tags.
+
+After some experimenting, I found that inserting the following code into the delete method of [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), _before_ <code>@article.destroy</code> is called, worked:
+
+<code>@article.tags.each do |tag|</code><br />
+&nbsp;&nbsp;<code>if tag.taggings.count == 1</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@tag = Tag.find(tag.id)</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@tag.destroy</code><br />
+&nbsp;&nbsp;<code>end</code><br />
+<code>end</code><br />

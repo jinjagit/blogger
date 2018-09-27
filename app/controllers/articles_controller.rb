@@ -23,6 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.view_count = Article.increment_view_count(@article.view_count)
     @article.update_attribute(:view_count, @article.view_count)
+    #@taggings = @article.taggings
     @comment = Comment.new
     @comment.article_id = @article.id
   end
@@ -56,6 +57,14 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+
+    @article.tags.each do |tag|
+      if tag.taggings.count == 1
+        @tag = Tag.find(tag.id)
+        @tag.destroy
+      end
+    end
+
     @article.destroy
 
     flash.notice = "Article '#{@article.title}' deleted!"
