@@ -183,7 +183,7 @@ After some experimenting, I achieved this by inserting the following code into t
 
 ### Ability to add links in article body text:
 
-I used a gem that should enable full mark up syntax, but actually only some of it's functionality works (including links, which was what I wanted). I suspect this may because of the screen.css.scss file we were given early in the tutorial (perhaps preventing italic, bold, etc?).
+I used a gem that should enable full mark up syntax, but actually only some of it's functionality works (including links, which was what I mainly wanted). I suspect this may because of the screen.css.scss file we were given early in the tutorial (perhaps preventing italic, bold, etc?).
 
 I used this article as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
 
