@@ -119,7 +119,7 @@ Although suggested in the tutorial as an 'extra', I didn't implement this, as it
 
 ### L6 Implement view_count for articles:
 
-For a recap of how to add a new 'view_count' column to the articles model,  this post is helpful (remember the type is 'integer'). After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
+I added a new 'view_count' column, of type integer, to the articles database table. For a recap of how to this, I found [this post](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration) helpful. After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
 
 The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb).
 
