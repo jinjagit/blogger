@@ -12,11 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    if params[:sort_by_views]
-      @articles = Article.all.order("view_count DESC")
-    else
-      @articles = Article.all.order("created_at ASC")
-    end
+    @articles = Article.all.order("created_at ASC")
+  end
+
+  def index_by_views
+    @articles = Article.all.order("view_count DESC").limit(3)
   end
 
   def show
