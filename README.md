@@ -144,6 +144,6 @@ After that, it was simply a matter of adding a conditional to the delete link, s
 
 For a recap of how to add a new 'view_count' column to the articles model,  this post is helpful (remember the type is 'integer'). After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
 
-The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb). 
+The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb).
 
 After that, it is a simple task to show the view count on the article(s) page(s), by adding the relevant code to [.../views/articles.show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
