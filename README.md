@@ -191,4 +191,4 @@ I used this article as a guide. Only installation of the gem, restart of your ra
 
 Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '<br />' statements where needed.
 
-A link can now be included in an article body text using the following format: \[text_label_to_show]\(some_url_here)
+A link can now be included in an article body text using the following format: \[text_to_display]\(some_url_here)
