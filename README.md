@@ -116,6 +116,21 @@ Note: Because we are given a huge (and unreadable) block of css styling in scree
 
 Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well. I did include a timestamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired).
 
+
+### L6 Implement view_count for articles:
+
+For a recap of how to add a new 'view_count' column to the articles model,  this post is helpful (remember the type is 'integer'). After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
+
+The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb).
+
+After that, it is a simple task to show the view count on the article(s) page(s), by adding the relevant code to [.../views/articles.show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
+
+### L6 Create new view; list of top 3 most viewed articles:
+
+First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/blob/master/config/routes.rb), called 'index_by_views', using information in [this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) as a template. Then, I created a new method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), modeled on the 'index' method, but with a different ordering (by number of views, in descending order). I also changed 'index' to specify ascending created_at order. This meant I could now add a button to my sidebar that linked to the new 'index_by_views'.
+
+Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view and changed the title to something appropriate.
+
 ### Preserve newlines in body text of articles:
 
 I found this worked:
@@ -139,17 +154,3 @@ I probably should have created my own buttons (for example, for the links on the
 It took me a while to discover a way to delete comments. After getting most of the way there, (adding a destroy function to comments_controller.rb, etc.), the last piece of the jigsaw fell into place when I found the syntax for the delete link in the [...views/articles/\_comment.html.erb partial](https://github.com/jinjagit/blogger/blob/master/app/views/articles/_comment.html.erb) in [this post](https://stackoverflow.com/questions/34476250/how-can-i-delete-comments-in-a-rails-blog-app).
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
-
-### Implement view_count for articles:
-
-For a recap of how to add a new 'view_count' column to the articles model,  this post is helpful (remember the type is 'integer'). After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
-
-The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb).
-
-After that, it is a simple task to show the view count on the article(s) page(s), by adding the relevant code to [.../views/articles.show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
-
-### Create view; list of top 3 most viewed articles:
-
-First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/blob/master/config/routes.rb), called 'index_by_views', using information in [this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) as a template. Then, I created a new method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), modeled on the 'index' method, but with a different ordering (by number of views, in descending order). I also changed 'index' to specify ascending created_at order. This meant I could now add a button to my sidebar that linked to the new 'index_by_views'.
-
-Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view and did a little more layout tweaking to tidy up.
