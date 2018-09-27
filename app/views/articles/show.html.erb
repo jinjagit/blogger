@@ -12,7 +12,7 @@
   <% end %>
 </p>
 <br />
-<p id="body_text"><%= @article.body %></p>
+<p id="body_text"><%= markdown(@article.body) %></p>
 <br />
 <p>
   <%= link_to "Tags:", tags_path %>

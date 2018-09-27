@@ -180,3 +180,11 @@ After some experimenting, I achieved this by inserting the following code into t
 &nbsp;&nbsp;&nbsp;&nbsp;<code>@tag.destroy</code><br />
 &nbsp;&nbsp;<code>end</code><br />
 <code>end</code><br />
+
+### Add Mark up functionality to body text:
+
+Mark up syntax enables italics, bold, links, insertion of images and much more. I added it to the article and comments body text.
+
+I used this article as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
+
+[Here](https://daringfireball.net/projects/markdown/syntax) is a list of the syntax it uses (based on Daring Fireball syntax).

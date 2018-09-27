@@ -23,7 +23,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.view_count = Article.increment_view_count(@article.view_count)
     @article.update_attribute(:view_count, @article.view_count)
-    #@taggings = @article.taggings
     @comment = Comment.new
     @comment.article_id = @article.id
   end
@@ -63,6 +62,7 @@ class ArticlesController < ApplicationController
         @tag = Tag.find(tag.id)
         @tag.destroy
       end
+
     end
 
     @article.destroy
