@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
-  before_action :require_login, except: [:show, :index]
+  before_action :require_login, except: [:show, :index, :index_by_views]
   before_action :author_or_admin, only: [:edit, :destroy]
 
   def author_or_admin
