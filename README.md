@@ -158,15 +158,19 @@ It took me a while to discover a way to delete comments. After getting most of t
 
 After that, it was simply a matter of adding a conditional to the delete link, so it is only shown when "admin" (or any other specified user) is logged in, and adding the usual relevant before_action filter and related function to [comments_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/comments_controller.rb).
 
+### Delete orphaned taggings:
+
+The third Odin Project instruction for this tutorial exercise, says:
+
+"After you finish going through the tutorial, you’ll notice that if you delete a tag, all related orphaned taggings will remain there..."
+
+I found [this](https://stackoverflow.com/questions/34624754/how-it-works-belongs-to-user-dependent-destroy) post useful in understanding this issue.
+
+Adding the relevant dependent: :destroy or dependent: :delete_all to the models [tag.rb](https://github.com/jinjagit/blogger/blob/master/app/models/tag.rb) and [article.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) resolves this issue.
+
 ### Delete orphaned tags:
 
-This is _kind of_ related to the final extra task listed in the Odin Project instructions for this tutorial exercise, where it says;
-
-"...if you delete a tag, all related orphaned taggings will remain there."
-
-__Except they don't!__ Using the rails console to observe all tags and all taggings when all articles associated with a particular tag are deleted, shows all taggings are correctly destroyed. Likewise, the console also reveals that when a tag is deleted (manually), all the related taggings are also correctly destroyed. The <code>dependent: :destroy</code> mentioned in the Odin instructions has already been included, so taggings are __not__ the problem.
-
-Tags _are_ an issue however. When all articles that contain a reference to a tag are deleted, the tag remains. Thus, orphaned tags (__not__ taggings) are the issue.
+When all articles that contain a reference to a tag are deleted, the tag remains.
 
 To further confirm this, I created a couple of orphaned tags (by creating an article with 2 new, unique tags), and then inserted <code><%= "#{tag.taggings.count}" %></code> into the <code>@tags.each do |tag|</code> in the tags index view. Sure enough, the two orphaned tags had 0 taggings associated, (and the non-orphans had 1 or more taggings associated).
 
