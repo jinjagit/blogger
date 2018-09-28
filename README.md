@@ -191,8 +191,6 @@ I used a gem that should enable full mark up syntax, but actually only some of i
 
 I used this article as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
 
-[Here](https://daringfireball.net/projects/markdown/syntax) is a list of the syntax it uses (based on Daring Fireball syntax).
-
 Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '\<br /\>' statements where needed.
 
 A link can now be included in an article body text using the following format: \[text_to_display]\(some_url_here)
