@@ -1,9 +1,9 @@
 class AddImageToArticles < ActiveRecord::Migration[5.2]
   def self.up
-    add_attachment :friends, :avatar
+    add_attachment :articles, :image
   end
 
   def self.down
-    remove_attachment :friends, :avatar
+    remove_attachment :articles, :image
   end
 end
