@@ -197,8 +197,6 @@ A link can now be included in an article body text using the following format: \
 
 ### Enable persistence of images on Heroku remote deployment:
 
-[EDIT: Still a work in progress. This __does not work yet!__]
-
 If, like me, you implemented the option of adding of an image file to each article, you will be disappointed to find that heroku will 'lose' the files pretty quickly (at best it will hold onto them until the server sleeps, after 30 minutes of inactivity). There is a fix, and whilst it's a bit complicated (to me), I felt it included skills and information that are useful to a novice web-dev.
 
 Basically, the fix is to get heroku to link to another remote server where the files can be stored (and get your app + heroku to upload and link to them on your new remote storage).
