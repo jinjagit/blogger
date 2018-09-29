@@ -207,12 +207,12 @@ Get a free AWS (Amazon Web Services) account. Set up a 'bucket' and call it blog
 
 Install awscli on your machine (on Ubuntu just run 'apt-get install awscli'). Configure awscli (on Ubuntu, use the 'aws configure' command. See [this guide](https://www.slashroot.in/how-to-install-and-configure-aws-cli-on-ubuntu-16-04)).
 
-Set your environment variables to the relevant values. Following [this guide](https://help.ubuntu.com/community/EnvironmentVariables), I decided to add the following lines to the etc/environment file (with the relevant details in place of the 'your...here' clauses):
+Set your environment variables to the relevant values. Following [this guide](https://help.ubuntu.com/community/EnvironmentVariables), I decided to add the following lines to the etc/environment file (with the relevant details in place of the 'your...here' clauses, and your bucket name in place of 'blogger-assets' if you chose a different name):
 
-export AWS_BUCKET=blogger-assets
-export AWS_ACCESS_KEY_ID=your_id_key_here
-export AWS_SECRET_ACCESS_KEY=your_secret_key_here
-export AWS_REGION=your_region
+<code>export AWS_BUCKET=blogger-assets</code><br />
+<code>export AWS_ACCESS_KEY_ID=your_id_key_here</code><br />
+<code>export AWS_SECRET_ACCESS_KEY=your_secret_key_here</code><br />
+<code>export AWS_REGION=your_region</code><br />
 
 Roll back the _specific_ migration from the tutorial that created the table columns and model attributes for the paperclip gem functionality. I used [this post] as a guide. Basically, do the following:
 
@@ -222,15 +222,15 @@ Then, delete the paperclip migration file with the same version number prefix fr
 
 Then I used [this](https://devcenter.heroku.com/articles/paperclip-s3) heroku tutorial as a guide, with some notable differences:
 
-1. The [guide](https://devcenter.heroku.com/articles/paperclip-s3) uses a simple 'Friends' model, where each 'friend' can have an 'avatar' (an images), thus all references to friends/friend can be replaced with / thought of as 'articles/article' in the context of our blogger app, and 'avatar(s)' similarly conceptualized as 'image(s)'.
+1. The [guide](https://devcenter.heroku.com/articles/paperclip-s3) uses a simple 'Friends' model, where each 'friend' can have an 'avatar' (an image), thus all references to 'friend(s)' can be replaced with / thought of as 'article(s)' in the context of our blogger app, and 'avatar(s)' similarly conceptualized as 'image(s)'.
 
-2. When adding the 'aws-sdk' gem recommended by the [guide](https://devcenter.heroku.com/articles/paperclip-s3), it is necessary to also change the gemfile to specify gem 'paperclip', '5.3.0', otherwise the rails then server will complain that it probably needs the 'aws-sdk-s3'gem (it doesn't, believe me... adding this gem just leads to much confusion!). Make sure you can get the server back up and running before you go on to create the new migration from the heroku guide. This should confirm that your development.rb and production.rb files will pull the correct environment variables to permit your app to hook into the AWS server 'bucket' and that you haven't broken anything too important. At this point my app behaved as before, except that selecting an image file and then trying to create / edit article pages results in a "Article model missing" error, and create / edit article with no image selected results in a "undefined method image_content_type' error.
+2. When adding the 'aws-sdk' gem recommended by the [guide](https://devcenter.heroku.com/articles/paperclip-s3), it is necessary to also change the gemfile to specify gem <code>'paperclip', '5.3.0'</code>, otherwise the rails server will complain that it probably needs the 'aws-sdk-s3'gem. (It doesn't, believe me... adding this gem just leads to much confusion!). Make sure you can get the server back up and running before you go on to create the new migration from the [heroku guide](https://devcenter.heroku.com/articles/paperclip-s3). This should confirm that your development.rb and production.rb files will pull the correct environment variables to permit your app to hook into the AWS server 'bucket' and that you haven't broken anything too important. At this point my app behaved as before, except that selecting an image file and then trying to create / edit article pages results in a "Article model missing" error, and create / edit article with no image selected results in a "undefined method image_content_type' error.
 
-3. I then ran the new migration (from the [guide](https://devcenter.heroku.com/articles/paperclip-s3)). Then I edited the new file this created in db/migrate, as per the [guide](https://devcenter.heroku.com/articles/paperclip-s3) (replacing the empty 'def change' with the 'def self.up' and 'def sef.down' and replacing the words; 'friends' with 'articles' and 'avatar' with 'image'). I then ran rake db:migrate.
+3. I then ran the new migration (from the [guide](https://devcenter.heroku.com/articles/paperclip-s3)). I chose to call my migration 'AddImageToArticles' (not 'AddAvatarToFriends', as in the [guide](https://devcenter.heroku.com/articles/paperclip-s3)). Then I edited the new file this created in db/migrate, as per the [guide](https://devcenter.heroku.com/articles/paperclip-s3),  replacing the empty 'def change' with the 'def self.up' and 'def sef.down' (but replacing the words; 'friends' with 'articles' and 'avatar' with 'image'). I then ran rake db:migrate.
 
-4. I changed the line <code><%= form_for(@article, html: {multipart: true}) do |f| %></code> in wies/articles/\_form.html.erb to <code><%= form_for(@article, multipart: true) do |f| %></code>, to match the syntax used in the [guide](https://devcenter.heroku.com/articles/paperclip-s3).
+4. I changed the line <code><%= form_for(@article, html: {multipart: true}) do |f| %></code> in views/articles/\_form.html.erb to <code><%= form_for(@article, multipart: true) do |f| %></code>, to match the syntax used in the [guide](https://devcenter.heroku.com/articles/paperclip-s3).
 
-5. At this point, my app would not crash when adding an image file via create / edit article, but did not display the article (just the broken-image icon) even though a right click / 'view image info' showed it was pointing at the right location on my AWS server bucket. I then created a config/intializers/paperclip.rb with the content specified in the first part of the 'International users (additional configuration)' section of the [guide](https://devcenter.heroku.com/articles/paperclip-s3).
+5. At this point, my app would not crash when adding an image file via create / edit article, but did not display the article (just the broken-image icon) even though a right click / 'view image info' showed it was pointing at the right location on my AWS server bucket. I then created a config/intializers/paperclip.rb with the content specified in the first part of the 'International users (additional configuration)' section of the [guide](https://devcenter.heroku.com/articles/paperclip-s3) (since I am in the UK, and my heroku server is in the US. This perhaps would not be necessary for the heroku deployed app, since both it and my AWS bucket are in the US).
 
 Finally, my images were displayed correctly, and were being uploaded to my AWS bucket, and linked from there when displayed :-)
 
