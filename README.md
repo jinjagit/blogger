@@ -1,4 +1,4 @@
-# Issues with / fixes for Blogger 2 tutorial:
+# Issues with / fixes & tweaks for Blogger 2 tutorial:
 
 Many of the issues may well be due to my using Rails 5.2.0, not 4.0.0 as in the tutorial. Many of the extra tweaks / ideas, however, will work for many versions of Rails.
 
