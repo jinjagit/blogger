@@ -195,7 +195,7 @@ Note: This has the effect of reducing multiple new-lines (enabled in a previous 
 
 A link can now be included in an article body text using the following format: \[text_to_display]\(some_url_here)
 
-### Enabling persistence of images on Heroku remote deployment:
+### Enable persistence of images on Heroku remote deployment:
 
 [EDIT: Still a work in progress. This __does not work yet!__]
 
