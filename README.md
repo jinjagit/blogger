@@ -240,4 +240,4 @@ At this point my local Rails app displayed images correctly, and the images were
 
    Then, it is possible to continue with the heroku deployment as per usual, remembering to run <code>heroku run rails db:migrate</code> after pushing to heroku.
 
-Finally, I created a new user (author), signed in, created a new article (including adding an image file), and waited for one hour (without doing anything on the app) to allow the server to 'sleep' (as free heroku servers will do, after about 30 minutes of inactivity). I then returned to the app and refreshed the article page, and my image was still there :-)
+Finally, I visited [my app on heroku](https://murmuring-falls-90745.herokuapp.com/), created a new user (author), signed in, created a new article (including adding an image file), and waited for one hour (without doing anything on the app) to allow the server to 'sleep' (as free heroku servers will do, after about 30 minutes of inactivity). I then returned to the app and refreshed the article page, and my image was still there :-)
