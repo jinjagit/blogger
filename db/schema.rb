@@ -17,10 +17,6 @@ ActiveRecord::Schema.define(version: 2018_09_27_132607) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_file_name"
-    t.string "image_content_type"
-    t.integer "image_file_size"
-    t.datetime "image_updated_at"
     t.string "author"
     t.integer "view_count"
   end

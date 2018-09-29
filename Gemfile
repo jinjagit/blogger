@@ -16,6 +16,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'paperclip'
 gem 'sorcery'
 gem 'redcarpet', '~> 3.0.0'
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
