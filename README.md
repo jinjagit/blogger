@@ -84,11 +84,11 @@ However, if you wish others to be able to test out most of the functionality of 
 
 ### L5 Extra Credit: Restrict activity of user (both logged in and not logged in):
 
-The 'Extra Credit' part of L5 only asks for restricting the editing of articles to only their original 'owner' (author). I also added further restrictions, whereby only an "admin" (me) can edit / delete other authors' posts, edit / delete authors, or delete tags. This involved:
+The 'Extra Credit' part of L5 only asks for restricting the editing of articles to only their original 'owner' (author). I also added further restrictions, whereby only an "admin" (me) can edit / delete other authors' posts, edit / delete authors, or delete tags. To do this:
 
 1. Do not implement the feature in the tutorial that prevents new author creation by a non-logged in author (otherwise nobody can sign up without the help of a logged in user!), but rather include the code and comment it out (it will be a useful template for some of the steps below).
 
-2. Work out how to add an 'author' column to the articles database ([this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) might help). I then implemented showing the author name at the top of each article (created after adding the new database column) to confirm this works, before using this parameter in step 3, below.
+2. Work out how to add an 'author' column to the articles database ([this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) might help). Then implement showing the author name at the top of each article (created after adding the new database column) to confirm this works, before using this parameter in step 3, below.
 
 3. Add conditional statements to the various views to prevent the inclusion of the relevant links to non-authors / non-admins / non-logged in users (article edit / delete links in .../articles/show.html.erb, for example). Don't forget to do this for the 'create new article' button, author delete / edit links (I restricted this to "admin" only), and tag delete (also "admin" only).
 
@@ -110,15 +110,15 @@ Basically, it involves creating a layout partial, like my [\_sidebar.html.erb](h
 
 As, for example, in my [app/views/articles/show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
 
-Note: Because we are given a huge (and unreadable) block of css styling in screen.css.scss, the sidebar and main body of the web pages are not set up as 2 distinct columns. This makes centering the content of the pages relative to the sidebar somewhat messy. I have found a reasonable compromise (see .body css in [style.css.scss](https://github.com/jinjagit/blogger/blob/master/app/assets/stylesheets/style.css.scss)), but it can look a bit 'off' when viewed in a large window on a 4k screen. If this app was intended for real-life use, I would write all my own css. Since I need to learn about Rails more than develop my css skills, however, I can live with this.
+Note: Because the tutorial provides a huge (and virtually unreadable) block of css styling in screen.css.scss, the sidebar and main body of the web pages are not set up as 2 distinct columns. This makes centering the content of the pages relative to the sidebar somewhat messy. I found a reasonable compromise (see .body css in [style.css.scss](https://github.com/jinjagit/blogger/blob/master/app/assets/stylesheets/style.css.scss)), but it can look a bit 'off' when viewed in a large window on a 4k screen. If this app was intended for real-life use, I would write all my own css. Since I need to learn about Rails more than develop my css skills, however, I can live with this.
 
 ### L6 Date-based navigation links [Not implemented]:
 
-Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well (without manually resetting my system date and creating new articles, several times). I did include a time-stamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired). Creating such a new view would also be very similar to creating the new 'Top 3 Most Viewed Articles' view, as described below.
+Although suggested in the tutorial as an 'extra', I didn't implement this, as it seems unlikely I will have enough articles to warrant it, nor of enough different creation dates to test it well (without manually resetting my system date to different months and creating new articles, several times). I did include a time-stamp on each article, however, (top left), and it seems trivial to parse this for the number of the month / year and then filter articles to display accordingly (if this were desired). Creating such a new view would also be very similar to creating the new 'Top 3 Most Viewed Articles' view, as described below.
 
 ### L6 Implement view_count for articles:
 
-I added a new 'view_count' column, of type integer, to the articles database table. For a recap of how to this, I found [this post](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration) helpful. After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
+I added a new 'view_count' column, of type integer, to the articles database table. For a recap of how to do this, I found [this post](https://stackoverflow.com/questions/4834809/adding-a-column-to-an-existing-table-in-a-rails-migration) helpful. After doing that (and running <code>rake db:migrate</code>), I decided to go for the 'calling a model method from the controller' approach.
 
 The necessary code was added to the show method in the [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) controller, and a new method, called 'increment_view_count' in the [articles.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) model. The new parameter also needs to be 'permitted' in [articles_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/articles_helper.rb).
 
@@ -158,9 +158,11 @@ edit line in app/views/articles/show.html.erb<br />
 
 Taken from [here](https://stackoverflow.com/questions/3137393/rails-add-a-line-break-into-a-text-area).
 
+Note: My 'Ability to add links in article body text' feature (see below) breaks this functionality somewhat, though it also provides an alternative method to insert newlines.
+
 ### Limited control of button attributes:
 
-I probably should have created my own buttons (for example, for the links on the sidebar) using JavaScript, but instead decided to try to do this using only Ruby in the layout file(s). I found that if I just stuck to the default style (delivered by the screen.css.scss file), then I could get quite a good result that included a nice hover background color change. As soon as I changed the button background color (actually a gradient background-image), however, I lost this hover effect. I tried introducing special classes and many other methods, but I think that without understanding the screen.css.scss file better (which isn't really my focus for this project), I cannot do better. Also, since it looks OK to me, I am not too worried.
+I probably should have created my own buttons (for example, for the links on the sidebar) using CSS and/or JavaScript, but instead decided to try to do this using only Ruby in the layout file(s). I found that if I just stuck to the default style (delivered by the screen.css.scss file), then I could get quite a good result that included a nice hover background color change. As soon as I changed the button background color (actually a gradient background-image), however, I lost this hover effect. I tried introducing special classes and many other methods, but I think that without understanding the screen.css.scss file better, or completely rewriting it, (which isn't really my focus for this project), I cannot do better. Also, since it looks OK to me, I am not too worried.
 
 ### Add ability for admin to delete any comment:
 
@@ -176,7 +178,7 @@ The third Odin Project instruction for this tutorial exercise, says:
 
 I found [this](https://stackoverflow.com/questions/34624754/how-it-works-belongs-to-user-dependent-destroy) post useful in understanding this issue.
 
-Adding the relevant dependent: :destroy or dependent: :delete_all to the models [tag.rb](https://github.com/jinjagit/blogger/blob/master/app/models/tag.rb) and [article.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) resolves this issue.
+Adding the relevant dependent: :destroy or dependent: :delete_all to the models [tag.rb](https://github.com/jinjagit/blogger/blob/master/app/models/tag.rb) and [article.rb](https://github.com/jinjagit/blogger/blob/master/app/models/article.rb) resolves this issue. In my case, I had already done this, since implementing the tutorial's comments and tags sections broke my app, and inserting these clauses 'repired' the app, so I am not quite sure how one would get to the end of the tutorial and then approach the third Odin instruction as an 'extra'. I included this fix separately, just in case there is some way this could happen.
 
 ### Delete orphaned tags:
 
@@ -184,7 +186,7 @@ When all articles that contain a reference to a tag are deleted, the tag remains
 
 To further confirm this, I created a couple of orphaned tags (by creating an article with 2 new, unique tags), and then inserted <code><%= "#{tag.taggings.count}" %></code> into the <code>@tags.each do |tag|</code> in the tags index view. Sure enough, the two orphaned tags had 0 taggings associated, (and the non-orphans had 1 or more taggings associated).
 
-Thus, it would be trivial to filter out orphaned tags from the tags index view using a conditional; <code><% if tag.taggings.count != 0 %></code>, but that wouldn't actually remove the tags! In this app, that wouldn't matter, but in another context a database table could be filling with a large number of orphaned items which are never removed. Really, the tag needs removing when the article is deleted, which means the delete method in the articles controller needs to trigger a check for whether associated tags have only one tagging associated, and if so, then trigger the deletion of any such tags.
+Thus, it would be trivial to filter out orphaned tags from the tags index view using a conditional; <code><% if tag.taggings.count != 0 %></code>, but that wouldn't actually remove the tags! In this app, that wouldn't matter, but in another context a database table could be filling with a large number of orphaned items which are never removed. Really, the tag needs removing when the article is deleted, which means the delete method in the articles controller needs to trigger a check for whether each associated tag has only one tagging associated, and if so, then trigger the deletion of any such tag(s).
 
 After some experimenting, I achieved this by inserting the following code into the delete method of [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), _before_ <code>@article.destroy</code> is called:
 
@@ -197,9 +199,9 @@ After some experimenting, I achieved this by inserting the following code into t
 
 ### Ability to add links in article body text:
 
-I used a gem that should enable full mark up syntax, but actually only some of it's functionality works (including links, which was what I mainly wanted). I suspect this may because of the screen.css.scss file we were given early in the tutorial (perhaps preventing italic, bold, etc?).
+I used a gem that should enable full mark up syntax, but actually only some of it's functionality works (including links, which was what I mainly wanted). I suspect this may because of the screen.css.scss file we were given early in the tutorial (perhaps it doesn't include italic and bold fonts, etc?).
 
-I used this article as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
+I used [this article](https://richonrails.com/articles/rendering-markdown-with-redcarpet) as a guide. Only installation of the gem, restart of your rails server, and copying the relevant code into your [application_helper.rb](https://github.com/jinjagit/blogger/blob/master/app/helpers/application_helper.rb) file is required (I also added <code>require 'redcarpet'</code>, for good measure).
 
 Note: This has the effect of reducing multiple new-lines (enabled in a previous step, above) to one new-line (maximum), but this can be overcome by using multiple '\<br /\>' statements where needed.
 
