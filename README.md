@@ -197,6 +197,8 @@ A link can now be included in an article body text using the following format: \
 
 ### Enabling persistence of images on Heroku remote deployment:
 
+[EDIT: Still a work in progress. This __does not work yet!__]
+
 If, like me, you implemented the option of adding of an image file to each article, you will be disappointed to find that heroku will 'lose' the files pretty quickly (at best it will hold onto them until the server sleeps, after 30 minutes of inactivity). There is a fix, and whilst it's a bit complicated (to me), I felt it included skills and information that are useful to a novice web-dev.
 
 Basically, the fix is to get heroku to link to another remote server where the files can be stored (and get your app + heroku to upload and link to them on your new remote storage).
@@ -240,4 +242,4 @@ At this point my local Rails app displayed images correctly, and the images were
 
    Then, it is possible to continue with the heroku deployment as per usual, remembering to run <code>heroku run rails db:migrate</code> after pushing to heroku.
 
-Finally, I visited [my app on heroku](https://murmuring-falls-90745.herokuapp.com/), created a new user (author), signed in, created a new article (including adding an image file), and waited for one hour (without doing anything on the app) to allow the server to 'sleep' (as free heroku servers will do, after about 30 minutes of inactivity). I then returned to the app and refreshed the article page, and my image was still there :-)
+Finally, I visited [my app on heroku](https://murmuring-falls-90745.herokuapp.com/), created a new user (author), signed in, created a new article (including adding an image file), and waited for one hour (without doing anything on the app) to allow the server to 'sleep' (as free heroku servers will do, after about 30 minutes of inactivity). I then returned to the app and refreshed the article page, and... __my image was gone___ (grrrr... needs more work!)
