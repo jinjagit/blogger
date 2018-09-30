@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   include ArticlesHelper
-  before_action :require_login, except: [:show, :index, :index_by_views]
+  before_action :require_login, except: [:show, :index, :index_by_views, :top_3]
   before_action :author_or_admin, only: [:edit, :destroy]
 
   def author_or_admin
@@ -12,7 +12,11 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.all.order("created_at ASC")
+    if params[:top_3] == true
+      @articles = Article.all.order("view_count DESC").limit(3)
+    else
+      @articles = Article.all.order("created_at ASC")
+    end
   end
 
   def index_by_views

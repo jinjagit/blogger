@@ -130,6 +130,8 @@ First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/
 
 Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view (and the original index view) and changed the page title to something appropriate.
 
+Note: I don't like this solution. It seems wrong to create 2 views using almost exactly the same code. better would be a conditional statement in the controller index method.
+
 ### L6 Create a simple RSS feed [Not implemented]:
 
 Whilst the <code>respond_to</code> [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, did not implement this last 'extra' step in L6.
