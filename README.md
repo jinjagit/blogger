@@ -158,7 +158,7 @@ And, finally, change the heading in the index view; [index.html.erb](https://git
 
 Whilst the <code>respond_to</code> [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, did not implement this last 'extra' step in L6.
 
-### Order tags & authors alphabetically in tag index view:
+### Order tags & authors alphabetically in index views:
 
 Simply change the line:
 
