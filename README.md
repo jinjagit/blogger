@@ -124,13 +124,26 @@ The necessary code was added to the show method in the [articles_controller.rb](
 
 After that, it is a simple task to show the view count on the article(s) page(s), by adding the relevant code to [.../views/articles.show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
 
-### L6 Create new view; list of top 3 most viewed articles:
+### L6 Create new index action; list of top 3 most viewed articles:
 
-First, I created a new route in [routes.rb](https://github.com/jinjagit/blogger/blob/master/config/routes.rb), called 'index_by_views', using information in [this post](https://stackoverflow.com/questions/20383503/add-new-view-to-a-controller-in-rails) as a template. Then, I created a new method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), modeled on the 'index' method, but with a different ordering (by number of views, in descending order). I also changed 'index' to specify ascending created_at order. This meant I could now add a button to my sidebar that linked to the new 'index_by_views'.
+I decided to pass an argument; 'top_3', as either 'true' or 'false', from the button links on my sidebar; to the regular index (where all articles are shown, listed by date order), and the new 'Top 3' index (where the top 3 articles, by view count, are listed). In my case, this meant adding the following code to my [-sidebar.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/_sidebar.html.erb) (with some styling removed):
 
-Adding <code>.limit(3)</code> to the end of the 'index_by_views' article sorting statement, in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), ensured only three articles are returned to this new view. Lastly, I made the view count of each article visible in this new view (and the original index view) and changed the page title to something appropriate.
+<code><div class="btn"></code><br />
+&nbsp;&nbsp;<code><%= button_to "All Articles", articles_path(top_3: false), method: :get %></code><br />
+<code></div></code><br />
+<code><div class="btn"></code><br />
+&nbsp;&nbsp;<code><%= button_to "Top 3", articles_path(top_3: true), method: :get %></code><br />
+<code></div></code><br />
 
-Note: I don't like this solution. It seems wrong to create 2 views using almost exactly the same code. better would be a conditional statement in the controller index method.
+And changing the 'index' method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), to:
+
+<code>def index</code><br />
+&nbsp;&nbsp;<code>if params[:top_3] == 'true'</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@articles = Article.all.order("view_count DESC").limit(3)</code><br />
+&nbsp;&nbsp;<code>else</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@articles = Article.all.order("created_at ASC")</code><br />
+&nbsp;&nbsp;<code>end</code><br />
+<code>end</code><br />
 
 ### L6 Create a simple RSS feed [Not implemented]:
 
