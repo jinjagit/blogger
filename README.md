@@ -134,8 +134,10 @@ I decided to pass an argument; 'top_3', as either 'true' or 'false', from the bu
 &nbsp;&nbsp;<code><%= button_to "All Articles", articles_path(top_3: false), method: :get %></code><br />
 <code>\</div\></code><br />
 <code>\<div class="btn"\></code><br />
-&nbsp;&nbsp;<code><%= button_to "Top 3", articles_path(top_3: true), method: :get %></code><br />
+&nbsp;&nbsp;<code><%= button_to "Top 3", articles_path, :style => 'width: 127px', method: :get, params: { top_3: true } %></code><br />
 <code>\</div\></code><br />
+
+Note: the syntax to add a param to the url query string when using 'button_to' is different to when using 'link_to'. This confused me for quite some time!
 
 And changing the 'index' method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), to:
 

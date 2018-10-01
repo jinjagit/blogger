@@ -4,7 +4,7 @@
       <%= button_to "All Articles", articles_path, :style => 'width: 127px', method: :get %>
     </div>
     <div class="btn">
-      <%= button_to "Top 3", articles_path(:top_3 => "true"), :style => 'width: 127px', method: :get %>
+      <%= button_to "Top 3", articles_path, :style => 'width: 127px', method: :get, params: { top_3: true } %>
     </div>
     <div class="btn">
       <%= button_to "All Tags", tags_path, :style => 'width: 127px', method: :get %>
