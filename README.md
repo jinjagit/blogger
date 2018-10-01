@@ -128,12 +128,12 @@ After that, it is a simple task to show the view count on the article(s) page(s)
 
 I decided to pass an argument; 'top_3', as either 'true' or 'false', from the button links on my sidebar; to the regular index (where all articles are shown, listed by date order), and the new 'Top 3' index (where the top 3 articles, by view count, are listed). In my case, this meant adding the following code to my [-sidebar.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/_sidebar.html.erb) (with some styling removed):
 
-<code><div class="btn"></code><br />
+<code>\<div class="btn"\></code><br />
 &nbsp;&nbsp;<code><%= button_to "All Articles", articles_path(top_3: false), method: :get %></code><br />
-<code></div></code><br />
-<code><div class="btn"></code><br />
+<code>\</div\></code><br />
+<code>\<div class="btn"\></code><br />
 &nbsp;&nbsp;<code><%= button_to "Top 3", articles_path(top_3: true), method: :get %></code><br />
-<code></div></code><br />
+<code>\</div\></code><br />
 
 And changing the 'index' method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), to:
 
