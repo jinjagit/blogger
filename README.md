@@ -145,7 +145,7 @@ And change the 'index' method in [articles_controller.rb](https://github.com/jin
 &nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'Top 3 Most Viewed'</code><br />
 &nbsp;&nbsp;<code>else</code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;<code>@articles = Article.all.order("created_at ASC")</code><br />
-nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'All Articles'</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'All Articles'</code><br />
 &nbsp;&nbsp;<code>end</code><br />
 <code>end</code><br />
 
