@@ -158,7 +158,7 @@ And, finally, change the heading in the index view; [index.html.erb](https://git
 
 Whilst the <code>respond_to</code> [looks quite interesting and flexible](https://ryanbigg.com/2009/04/how-rails-works-2-mime-types-respond_to), I don't use any RSS feeds and happen to know their use is generally declining. I, therefore, did not implement this last 'extra' step in L6.
 
-### Order tags alphabetically in tag index view:
+### Order tags & authors alphabetically in tag index view:
 
 Simply change the line:
 
@@ -167,6 +167,10 @@ Simply change the line:
 in the index method, in [tags_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/tags_controller.rb), to:
 
 <code>@tags = Tag.all.order('name ASC')</code><br />
+
+Revise the author index method similarly, except include forcing to lowercase before ordering:
+
+<code>@authors = Author.all.order('LOWER(username) ASC')</code><br />
 
 ### Preserve newlines in body text of articles:
 
