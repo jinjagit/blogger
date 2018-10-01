@@ -1,5 +1,8 @@
 module ApplicationHelper
   require 'redcarpet'
+
+
+
   def markdown(text)
     options = {
       filter_html:     true,

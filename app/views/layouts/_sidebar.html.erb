@@ -1,10 +1,10 @@
 <div class="sidenav">
   <ul>
     <div class="btn">
-      <%= button_to "All Articles", articles_path(top_3: false), :style => 'width: 127px', method: :get %>
+      <%= button_to "All Articles", articles_path, :style => 'width: 127px', method: :get %>
     </div>
     <div class="btn">
-      <%= button_to "Top 3", articles_path(top_3: true), :style => 'width: 127px', method: :get %>
+      <%= button_to "Top 3", articles_path(:top_3 => "true"), :style => 'width: 127px', method: :get %>
     </div>
     <div class="btn">
       <%= button_to "All Tags", tags_path, :style => 'width: 127px', method: :get %>
