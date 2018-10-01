@@ -151,7 +151,7 @@ nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'All Articles'</code><br />
 
 And, finally, change the heading in the index view index.html.erb to:
 
-<code>\<h1><%= @title %></h1></code><br />
+<code>\<h1><%= @title %>\</h1></code><br />
 
 
 ### L6 Create a simple RSS feed [Not implemented]:
