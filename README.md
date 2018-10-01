@@ -168,7 +168,7 @@ in the index method, in [tags_controller.rb](https://github.com/jinjagit/blogger
 
 <code>@tags = Tag.all.order('name ASC')</code><br />
 
-Revise the author index method similarly, except include forcing to lowercase before ordering:
+Revise the author index method similarly, except also include forcing to lowercase before ordering:
 
 <code>@authors = Author.all.order('LOWER(username) ASC')</code><br />
 
