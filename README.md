@@ -124,7 +124,7 @@ The necessary code was added to the show method in the [articles_controller.rb](
 
 After that, it is a simple task to show the view count on the article(s) page(s), by adding the relevant code to [.../views/articles.show.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/show.html.erb).
 
-### L6 Create new index action; list of top 3 most viewed articles:
+### L6 Create new index action; list top 3 most viewed articles:
 
 I decided to pass an argument; 'top_3' in the url query string, from the button link "Top 3" to the regular [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb) index method, to use in a conditional statement. In my case, this meant adding / amending the following code in my [_sidebar.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/layouts/_sidebar.html.erb) (with some styling removed):
 
