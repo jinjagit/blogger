@@ -14,8 +14,10 @@ class ArticlesController < ApplicationController
   def index
     if params[:top_3]
       @articles = Article.all.order("view_count DESC").limit(3)
+      @title = 'Top 3 Most Viewed'
     else
       @articles = Article.all.order("created_at ASC")
+      @title = 'All Articles'
     end
   end
 

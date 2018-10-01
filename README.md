@@ -137,15 +137,22 @@ I decided to pass an argument; 'top_3' in the url query string, from the button 
 
 Note: the syntax to add a param to the url query string when using 'button_to' is different to when using 'link_to'. This confused me for quite some time!
 
-And changing the 'index' method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), to:
+And change the 'index' method in [articles_controller.rb](https://github.com/jinjagit/blogger/blob/master/app/controllers/articles_controller.rb), to:
 
 <code>def index</code><br />
 &nbsp;&nbsp;<code>if params[:top_3] == 'true'</code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;<code>@articles = Article.all.order("view_count DESC").limit(3)</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'Top 3 Most Viewed'</code><br />
 &nbsp;&nbsp;<code>else</code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;<code>@articles = Article.all.order("created_at ASC")</code><br />
+nbsp;&nbsp;&nbsp;&nbsp;<code>@title = 'All Articles'</code><br />
 &nbsp;&nbsp;<code>end</code><br />
 <code>end</code><br />
+
+And, finally, change the heading in the index view index.html.erb to:
+
+<code>\<h1><%= @title %></h1></code><br />
+
 
 ### L6 Create a simple RSS feed [Not implemented]:
 
