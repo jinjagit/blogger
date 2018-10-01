@@ -149,7 +149,7 @@ And change the 'index' method in [articles_controller.rb](https://github.com/jin
 &nbsp;&nbsp;<code>end</code><br />
 <code>end</code><br />
 
-And, finally, change the heading in the index view index.html.erb to:
+And, finally, change the heading in the index view; [index.html.erb](https://github.com/jinjagit/blogger/blob/master/app/views/articles/index.html.erb), to:
 
 <code>\<h1><%= @title %>\</h1></code><br />
 
