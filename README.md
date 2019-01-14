@@ -1,4 +1,7 @@
-My solution to the Odin Project's ["Ruby on Rails" exercise](https://www.theodinproject.com/courses/web-development-101/lessons/ruby-on-rails). [View in browser](https://murmuring-falls-90745.herokuapp.com/authors)
+My solution to the Odin Project's ["Ruby on Rails" exercise](https://www.theodinproject.com/courses/web-development-101/lessons/ruby-on-rails).
+[View in browser](https://murmuring-falls-90745.herokuapp.com/authors)
+
+![screenshots](app/assets/images/bloggerScreens.png)
 
 # Issues with / fixes & tweaks for Blogger 2 tutorial:
 
