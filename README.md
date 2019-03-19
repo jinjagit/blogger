@@ -1,6 +1,6 @@
 My solution to the Odin Project's ["Ruby on Rails" exercise](https://www.theodinproject.com/courses/web-development-101/lessons/ruby-on-rails).
 
-[View in browser](https://blogger.simontharby.com/)
+[View in browser](https://blogger-simontharby.herokuapp.com/)
 
 ![screenshots](app/assets/images/bloggerScreens.png)
 
