@@ -1,7 +1,5 @@
 My solution to the Odin Project's ["Ruby on Rails" exercise](https://www.theodinproject.com/courses/web-development-101/lessons/ruby-on-rails).
 
-[View in browser](https://blogger-simontharby.herokuapp.com/) \*The server for this app may need to initialize and this may take up to 30 seconds.
-
 ![screenshots](app/assets/images/bloggerScreens.png)
 
 # Issues with / fixes & tweaks for Blogger 2 tutorial:
